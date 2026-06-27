@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Scott Furniture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 180px 8% 100px;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .page-hero-content .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 20px;
+    }
+
+    .page-hero-content h1 {
+      font-size: 4rem;
+      color: var(--timber);
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+
+    .page-hero-content p {
+      color: var(--mist);
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .page-hero-image img {
+      height: 560px;
+      object-fit: cover;
+    }
+
+    /* VALUES */
+    .values {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .value-card {
+      padding: 40px 32px;
+      border-top: 2px solid var(--sand);
+      transition: border-color 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: var(--bark);
+    }
+
+    .value-card h3 {
+      font-size: 1.5rem;
+      color: var(--timber);
+      margin-bottom: 14px;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      color: var(--mist);
+      line-height: 1.9;
+    }
+
+    /* STORY */
+    .story {
+      padding: var(--section-pad);
+      background: var(--timber);
+    }
+
+    .story-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .story-inner .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 24px;
+    }
+
+    .story-inner h2 {
+      font-size: 3rem;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+
+    .story-inner p {
+      color: var(--mist);
+      line-height: 2;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    /* TEAM */
+    .team {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .team-card img {
+      height: 380px;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+      margin-bottom: 20px;
+    }
+
+    .team-card h3 {
+      font-size: 1.3rem;
+      color: var(--timber);
+      margin-bottom: 4px;
+    }
+
+    .team-card p {
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--bark);
+    }
+
+    /* CTA */
+    .about-cta {
+      padding: 100px 8%;
+      background: var(--sand);
+      text-align: center;
+    }
+
+    .about-cta h2 {
+      font-size: 3rem;
+      color: var(--timber);
+      margin-bottom: 20px;
+    }
+
+    .about-cta p {
+      color: var(--mist);
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .page-hero {
+        grid-template-columns: 1fr;
+        padding: 120px 5% 60px;
+        gap: 40px;
+      }
+
+      .page-hero-content h1 { font-size: 2.6rem; }
+      .page-hero-image img { height: 320px; }
+
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+
+      .story { padding: 80px 5%; }
+      .story-inner h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Scott<span>.</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" onclick="openMenu()">&#9776;</button>
+  </header>
+
+  <div class="overlay-menu" id="overlayMenu">
+    <div class="close-btn" onclick="closeMenu()">&#10005;</div>
+    <ul>
+      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="projects.html" onclick="closeMenu()">Projects</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content reveal">
+      <span class="eyebrow">Our Story</span>
+      <h1>We build furniture that means something</h1>
+      <p>
+        Scott was born in Enugu from a simple frustration — it was hard to find furniture
+        that felt truly personal. Everything looked the same. So we started building our own,
+        and haven't stopped since.
+      </p>
+    </div>
+    <div class="page-hero-image reveal">
+      <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=700" alt="Craftsman at work">
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="section-header reveal">
+      <span class="eyebrow">What Drives Us</span>
+      <h2>Our values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <h3>Honesty in materials</h3>
+        <p>We use real wood, real finishes, and real joinery. No shortcuts, no filler — what you see is what the piece is made of.</p>
+      </div>
+      <div class="value-card reveal">
+        <h3>Built around you</h3>
+        <p>Every project starts with a conversation. We don't design in a vacuum — we listen first, then build around your life.</p>
+      </div>
+      <div class="value-card reveal">
+        <h3>Made to last</h3>
+        <p>We measure success in decades, not seasons. If a piece isn't strong enough to outlast a trend, it isn't good enough for Scott.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="story-inner reveal">
+      <span class="eyebrow">The Journey</span>
+      <h2>From one workshop to hundreds of homes</h2>
+      <p>
+        It started with a single bench, built for a friend's apartment in 2015. Word spread.
+        More friends asked. Then their friends asked. Within two years, Scott had a proper
+        workshop and a small team of craftsmen who shared the same obsession.
+      </p>
+      <p>
+        Today we've built furniture for over 150 homes and offices across Nigeria.
+        The workshop is bigger. The team has grown. But the way we work hasn't changed —
+        every piece is still built by hand, one at a time, with full attention from start to finish.
+      </p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <div class="section-header reveal">
+      <span class="eyebrow">The People</span>
+      <h2>The hands behind the work</h2>
+      <p>A small team with a big commitment to craft.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Founder">
+        <h3>Chukwuemeka Scott</h3>
+        <p>Founder & Lead Designer</p>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400" alt="Designer">
+        <h3>Adaeze Okafor</h3>
+        <p>Interior Designer</p>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="Craftsman">
+        <h3>Ikenna Nwosu</h3>
+        <p>Master Craftsman</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta reveal">
+    <h2>Ready to work with us?</h2>
+    <p>Let's start with a conversation about your space.</p>
+    <a href="contact.html" class="btn-primary">Get in Touch</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="logo">Scott<span>.</span></div>
+      <p>Handcrafted furniture and bespoke interiors built in Nigeria for homes that last.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Enugu, Nigeria</a></li>
+        <li><a href="#">+234 XXX XXX XXXX</a></li>
+        <li><a href="#">scott@gmail.com</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Scott. All Rights Reserved.</p>
+    <p>Crafted with care.</p>
+  </div>
+
+  <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.027 7.77L0 32l8.43-2.01A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.894 22.324c-.33.927-1.922 1.77-2.646 1.883-.678.106-1.53.15-2.468-.155-.569-.184-1.3-.43-2.234-.842-3.937-1.7-6.507-5.67-6.703-5.933-.196-.263-1.6-2.126-1.6-4.055s1.013-2.878 1.372-3.27c.358-.39.78-.488 1.04-.488.26 0 .52.002.748.014.24.012.562-.091.88.671.33.787 1.12 2.716 1.218 2.912.098.196.163.424.033.683-.13.26-.196.423-.39.651-.195.228-.41.51-.585.684-.195.195-.398.406-.171.797.228.39 1.013 2.358 1.95 3.158 1.338 1.95 2.46 2.56 2.916 2.854.456.293.72.244.985-.049.267-.293 1.137-1.327 1.44-1.782.303-.456.606-.38 1.023-.228.416.15 2.64 1.245 3.094 1.47.456.228.76.342.872.53.11.195.11 1.122-.22 2.05z"/>
+    </svg>
+  </a>
+
+  <script>
+    function openMenu() { document.getElementById('overlayMenu').classList.add('active'); }
+    function closeMenu() { document.getElementById('overlayMenu').classList.remove('active'); }
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>

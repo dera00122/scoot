@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Scott Furniture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-banner {
+      padding: 180px 8% 100px;
+      background: var(--timber);
+      text-align: center;
+    }
+
+    .page-banner .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 20px;
+    }
+
+    .page-banner h1 {
+      font-size: 4.5rem;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .page-banner p {
+      color: var(--mist);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* FILTER */
+    .filter-bar {
+      padding: 40px 8%;
+      background: var(--white);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid var(--sand);
+      background: transparent;
+      color: var(--mist);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: var(--sans);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--timber);
+      border-color: var(--timber);
+      color: var(--cream);
+    }
+
+    /* PROJECTS GRID */
+    .all-projects {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .projects-masonry {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .project-item img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .project-item.wide {
+      grid-column: 1 / -1;
+    }
+
+    .project-item.wide img {
+      height: 560px;
+    }
+
+    .project-item:hover img { transform: scale(1.06); }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 40%, rgba(44,36,32,0.9));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 36px;
+    }
+
+    .project-item:hover .project-overlay { opacity: 1; }
+
+    .project-details .proj-cat {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 6px;
+    }
+
+    .project-details h3 {
+      font-size: 1.6rem;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .project-details p {
+      font-size: 0.85rem;
+      color: var(--sand);
+    }
+
+    /* ALWAYS VISIBLE LABEL (for mobile) */
+    .project-label {
+      padding: 20px 0 0;
+    }
+
+    .project-label .proj-cat {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 4px;
+    }
+
+    .project-label h3 {
+      font-size: 1.2rem;
+      color: var(--timber);
+    }
+
+    @media (max-width: 768px) {
+      .page-banner { padding: 130px 5% 70px; }
+      .page-banner h1 { font-size: 2.8rem; }
+
+      .projects-masonry { grid-template-columns: 1fr; }
+      .project-item.wide { grid-column: 1; }
+      .project-item.wide img,
+      .project-item img { height: 280px; }
+
+      .project-overlay { opacity: 1; }
+      .all-projects { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Scott<span>.</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" onclick="openMenu()">&#9776;</button>
+  </header>
+
+  <div class="overlay-menu" id="overlayMenu">
+    <div class="close-btn" onclick="closeMenu()">&#10005;</div>
+    <ul>
+      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="projects.html" onclick="closeMenu()">Projects</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <section class="page-banner">
+    <span class="eyebrow">Our Work</span>
+    <h1>Every project, a story</h1>
+    <p>150+ spaces transformed. Each one built around the people who live and work in them.</p>
+  </section>
+
+  <div class="filter-bar">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Living Rooms</button>
+    <button class="filter-btn">Kitchens</button>
+    <button class="filter-btn">Bedrooms</button>
+    <button class="filter-btn">Offices</button>
+    <button class="filter-btn">Wardrobes</button>
+  </div>
+
+  <section class="all-projects">
+    <div class="projects-masonry">
+
+      <div class="project-item wide reveal">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200" alt="Living Room">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Living Room · 2025</p>
+            <h3>The Adeyemi Residence</h3>
+            <p>Custom sofa, coffee table, and shelving unit in Iroko wood</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700" alt="Kitchen">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Kitchen · 2025</p>
+            <h3>Eze Family Home</h3>
+            <p>Full kitchen cabinetry in Mahogany with brass fittings</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700" alt="Bedroom">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Bedroom · 2024</p>
+            <h3>Victoria Island Apartment</h3>
+            <p>Bespoke bed frame, side tables, and wardrobe in Oak</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700" alt="Wardrobe">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Wardrobe · 2024</p>
+            <h3>Lekki Walk-in Closet</h3>
+            <p>Walk-in wardrobe with LED lighting and velvet-lined drawers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item wide reveal">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200" alt="Office">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Office · 2024</p>
+            <h3>Obi & Partners Law Firm</h3>
+            <p>Executive desks, bookcases, and reception desk in Teak</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700" alt="Dining">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Dining Room · 2023</p>
+            <h3>GRA Enugu Home</h3>
+            <p>8-seater dining table and chairs in solid Iroko</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700" alt="Living">
+        <div class="project-overlay">
+          <div class="project-details">
+            <p class="proj-cat">Living Room · 2023</p>
+            <h3>Independence Layout Residence</h3>
+            <p>TV unit, display shelves, and accent wall panelling</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="logo">Scott<span>.</span></div>
+      <p>Handcrafted furniture and bespoke interiors built in Nigeria for homes that last.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Enugu, Nigeria</a></li>
+        <li><a href="#">+234 XXX XXX XXXX</a></li>
+        <li><a href="#">scott@gmail.com</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Scott. All Rights Reserved.</p>
+    <p>Crafted with care.</p>
+  </div>
+
+  <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.027 7.77L0 32l8.43-2.01A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.894 22.324c-.33.927-1.922 1.77-2.646 1.883-.678.106-1.53.15-2.468-.155-.569-.184-1.3-.43-2.234-.842-3.937-1.7-6.507-5.67-6.703-5.933-.196-.263-1.6-2.126-1.6-4.055s1.013-2.878 1.372-3.27c.358-.39.78-.488 1.04-.488.26 0 .52.002.748.014.24.012.562-.091.88.671.33.787 1.12 2.716 1.218 2.912.098.196.163.424.033.683-.13.26-.196.423-.39.651-.195.228-.41.51-.585.684-.195.195-.398.406-.171.797.228.39 1.013 2.358 1.95 3.158 1.338 1.95 2.46 2.56 2.916 2.854.456.293.72.244.985-.049.267-.293 1.137-1.327 1.44-1.782.303-.456.606-.38 1.023-.228.416.15 2.64 1.245 3.094 1.47.456.228.76.342.872.53.11.195.11 1.122-.22 2.05z"/>
+    </svg>
+  </a>
+
+  <script>
+    function openMenu() { document.getElementById('overlayMenu').classList.add('active'); }
+    function closeMenu() { document.getElementById('overlayMenu').classList.remove('active'); }
+
+    // Filter buttons (visual only)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>

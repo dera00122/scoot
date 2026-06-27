@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott — Handcrafted Furniture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- HERO ---- */
+    .hero {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 6% 80px 8%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 4.8rem;
+      color: var(--timber);
+      margin-bottom: 28px;
+      line-height: 1.08;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--bark);
+    }
+
+    .hero-desc {
+      color: var(--mist);
+      font-size: 1rem;
+      line-height: 1.9;
+      max-width: 400px;
+      margin-bottom: 44px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 8s ease;
+    }
+
+    .hero-right:hover img { transform: scale(1.04); }
+
+    .hero-tag {
+      position: absolute;
+      bottom: 40px;
+      left: -1px;
+      background: var(--cream);
+      padding: 18px 28px;
+      border-left: 3px solid var(--bark);
+    }
+
+    .hero-tag p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--timber);
+    }
+
+    .hero-tag span {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    /* ---- MARQUEE ---- */
+    .marquee-strip {
+      background: var(--timber);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 60px;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: 0.78rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+
+    .marquee-track .dot {
+      color: var(--bark);
+      letter-spacing: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ---- ABOUT STRIP ---- */
+    .about-strip {
+      padding: var(--section-pad);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .about-strip-image {
+      position: relative;
+    }
+
+    .about-strip-image img {
+      height: 580px;
+      object-fit: cover;
+    }
+
+    .about-strip-image .wood-badge {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 120px;
+      height: 120px;
+      background: var(--bark);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .wood-badge strong {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .wood-badge small {
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-top: 4px;
+    }
+
+    .about-strip-content .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 18px;
+    }
+
+    .about-strip-content h2 {
+      font-size: 3rem;
+      color: var(--timber);
+      margin-bottom: 24px;
+    }
+
+    .about-strip-content p {
+      color: var(--mist);
+      line-height: 1.9;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .about-strip-content .btn-secondary {
+      margin-top: 20px;
+    }
+
+    /* ---- SERVICES ---- */
+    .services {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--sand);
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 48px 36px;
+      transition: background 0.35s ease;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      background: var(--timber);
+    }
+
+    .service-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--sand);
+      line-height: 1;
+      margin-bottom: 20px;
+      transition: color 0.35s;
+    }
+
+    .service-card:hover .service-num { color: var(--bark); }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      color: var(--timber);
+      margin-bottom: 12px;
+      transition: color 0.35s;
+    }
+
+    .service-card:hover h3 { color: var(--cream); }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--mist);
+      line-height: 1.8;
+      transition: color 0.35s;
+    }
+
+    .service-card:hover p { color: var(--sand); }
+
+    /* ---- PROJECTS PREVIEW ---- */
+    .projects-preview {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 20px;
+    }
+
+    .proj-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .proj-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .proj-card.tall img { height: 640px; }
+
+    .proj-card:hover img { transform: scale(1.06); }
+
+    .proj-info {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      padding: 32px;
+      background: linear-gradient(transparent, rgba(44,36,32,0.88));
+    }
+
+    .proj-info .proj-cat {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 6px;
+    }
+
+    .proj-info h3 {
+      font-size: 1.5rem;
+      color: var(--cream);
+    }
+
+    .proj-card.side {
+      grid-column: 2;
+    }
+
+    .projects-footer {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* ---- MATERIAL STORY ---- */
+    .material-story {
+      padding: var(--section-pad);
+      background: var(--timber);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .material-content .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 18px;
+    }
+
+    .material-content h2 {
+      font-size: 3rem;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .material-content p {
+      color: var(--mist);
+      line-height: 1.9;
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .material-item {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
+    }
+
+    .material-item h4 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 6px;
+    }
+
+    .material-item p {
+      font-size: 0.88rem;
+      color: var(--mist);
+      margin-bottom: 0;
+    }
+
+    .material-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .material-images img {
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .material-images img:first-child {
+      grid-column: 1 / -1;
+      height: 220px;
+    }
+
+    /* ---- STATS ---- */
+    .stats-bar {
+      padding: 80px 8%;
+      background: var(--sand);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3.5rem;
+      color: var(--timber);
+      margin-bottom: 8px;
+    }
+
+    .stat-item p {
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    /* ---- CONTACT CTA ---- */
+    .contact-cta {
+      padding: var(--section-pad);
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .contact-cta .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 20px;
+    }
+
+    .contact-cta h2 {
+      font-size: 3.8rem;
+      color: var(--timber);
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+
+    .contact-cta p {
+      color: var(--mist);
+      max-width: 500px;
+      margin: 0 auto 44px;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding-top: 80px;
+      }
+
+      .hero-left { padding: 60px 5%; }
+      .hero h1 { font-size: 2.8rem; }
+
+      .hero-right { height: 55vw; min-height: 280px; }
+      .hero-tag { display: none; }
+
+      .about-strip {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 80px 5%;
+      }
+
+      .about-strip-image .wood-badge { right: 10px; bottom: -20px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proj-card.tall img,
+      .proj-card img { height: 280px; }
+
+      .material-story {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 80px 5%;
+      }
+
+      .material-images { display: none; }
+
+      .stats-bar {
+        grid-template-columns: 1fr 1fr;
+        padding: 60px 5%;
+      }
+
+      .contact-cta h2 { font-size: 2.4rem; }
+      .contact-cta { padding: 80px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Scott<span>.</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" onclick="openMenu()">&#9776;</button>
+  </header>
+
+  <!-- OVERLAY MENU -->
+  <div class="overlay-menu" id="overlayMenu">
+    <div class="close-btn" onclick="closeMenu()">&#10005;</div>
+    <ul>
+      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="projects.html" onclick="closeMenu()">Projects</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Handcrafted in Nigeria</p>
+      <h1>Furniture that <em>lives</em> with you</h1>
+      <p class="hero-desc">
+        Scott creates bespoke furniture built from natural wood and honest materials —
+        made to last generations, not seasons.
+      </p>
+      <div class="hero-buttons">
+        <a href="projects.html" class="btn-primary">View Our Work</a>
+        <a href="contact.html" class="btn-secondary">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900" alt="Scott furniture living room">
+      <div class="hero-tag">
+        <span>Latest Project</span>
+        <p>The Okonkwo Residence</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Custom Furniture</span><span class="dot">·</span>
+      <span>Luxury Wardrobes</span><span class="dot">·</span>
+      <span>Kitchen Cabinets</span><span class="dot">·</span>
+      <span>TV Units</span><span class="dot">·</span>
+      <span>Office Interiors</span><span class="dot">·</span>
+      <span>Bespoke Design</span><span class="dot">·</span>
+      <span>Custom Furniture</span><span class="dot">·</span>
+      <span>Luxury Wardrobes</span><span class="dot">·</span>
+      <span>Kitchen Cabinets</span><span class="dot">·</span>
+      <span>TV Units</span><span class="dot">·</span>
+      <span>Office Interiors</span><span class="dot">·</span>
+      <span>Bespoke Design</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div class="about-strip-image reveal">
+      <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=700" alt="Craftsman at work">
+      <div class="wood-badge">
+        <strong>10+</strong>
+        <small>Years of Craft</small>
+      </div>
+    </div>
+    <div class="about-strip-content reveal">
+      <span class="eyebrow">Who We Are</span>
+      <h2>Built by hand. Designed for life.</h2>
+      <p>
+        Scott was founded on a single belief — that furniture should feel like it belongs.
+        Not just in a room, but in a life. Every piece we build is shaped around the people
+        who will use it.
+      </p>
+      <p>
+        We work with sustainably sourced hardwoods and natural finishes, combining
+        traditional joinery with clean modern forms.
+      </p>
+      <a href="about.html" class="btn-secondary">Our Story</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="section-header reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Every space, made personal</h2>
+      <p>From a single wardrobe to a complete interior — we build it around you.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <h3>Custom Furniture</h3>
+        <p>Sofas, beds, tables and chairs built exactly to your specification and space.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <h3>Luxury Wardrobes</h3>
+        <p>Walk-in and fitted wardrobes with premium internal fittings and finishes.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <h3>Kitchen Cabinets</h3>
+        <p>Handcrafted cabinetry that balances beauty and everyday function.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <h3>TV & Media Units</h3>
+        <p>Bespoke entertainment centres designed around your room layout.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <h3>Office Interiors</h3>
+        <p>Workspaces that feel considered — desks, shelving, and storage built to focus.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <h3>Full Interior Design</h3>
+        <p>End-to-end interior transformation from concept to completion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS PREVIEW -->
+  <section class="projects-preview">
+    <div class="section-header reveal">
+      <span class="eyebrow">Selected Work</span>
+      <h2>Recent projects</h2>
+      <p>A small selection of spaces we've had the privilege of building.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card tall reveal">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800" alt="Living Room">
+        <div class="proj-info">
+          <p class="proj-cat">Living Room</p>
+          <h3>The Adeyemi Residence</h3>
+        </div>
+      </div>
+      <div class="proj-card side reveal">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600" alt="Kitchen">
+        <div class="proj-info">
+          <p class="proj-cat">Kitchen</p>
+          <h3>Eze Family Home</h3>
+        </div>
+      </div>
+      <div class="proj-card side reveal">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600" alt="Bedroom">
+        <div class="proj-info">
+          <p class="proj-cat">Master Bedroom</p>
+          <h3>Victoria Island Apartment</h3>
+        </div>
+      </div>
+    </div>
+    <div class="projects-footer reveal">
+      <a href="projects.html" class="btn-primary">See All Projects</a>
+    </div>
+  </section>
+
+  <!-- MATERIAL STORY -->
+  <section class="material-story">
+    <div class="material-content reveal">
+      <span class="eyebrow">Our Materials</span>
+      <h2>Wood chosen with care</h2>
+      <p>
+        We source hardwoods that are responsibly grown — Iroko, Mahogany, Teak, and Oak.
+        Each piece is finished with natural oils that protect the wood and let its grain breathe.
+      </p>
+      <div class="material-list">
+        <div class="material-item">
+          <h4>Iroko</h4>
+          <p>Durable, warm-toned African hardwood</p>
+        </div>
+        <div class="material-item">
+          <h4>Mahogany</h4>
+          <p>Rich, deep grain for premium pieces</p>
+        </div>
+        <div class="material-item">
+          <h4>Teak</h4>
+          <p>Water-resistant, built for longevity</p>
+        </div>
+        <div class="material-item">
+          <h4>Oak</h4>
+          <p>Light, versatile, timeless character</p>
+        </div>
+      </div>
+    </div>
+    <div class="material-images reveal">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Wood grain">
+      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400" alt="Furniture detail">
+      <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=400" alt="Interior detail">
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <h3>150+</h3>
+      <p>Projects Completed</p>
+    </div>
+    <div class="stat-item reveal">
+      <h3>10+</h3>
+      <p>Years Experience</p>
+    </div>
+    <div class="stat-item reveal">
+      <h3>100%</h3>
+      <p>Bespoke Builds</p>
+    </div>
+    <div class="stat-item reveal">
+      <h3>5★</h3>
+      <p>Client Satisfaction</p>
+    </div>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-cta">
+    <span class="eyebrow">Ready to Start?</span>
+    <h2>Let's build something worth keeping</h2>
+    <p>Tell us about your space and we'll put together a plan that fits your vision and budget.</p>
+    <div class="cta-buttons">
+      <a href="contact.html" class="btn-primary">Get a Free Quote</a>
+      <a href="projects.html" class="btn-secondary">Browse Projects</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="logo">Scott<span>.</span></div>
+      <p>Handcrafted furniture and bespoke interiors built in Nigeria for homes that last.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Enugu, Nigeria</a></li>
+        <li><a href="#">+234 XXX XXX XXXX</a></li>
+        <li><a href="#">scott@gmail.com</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Scott. All Rights Reserved.</p>
+    <p>Crafted with care.</p>
+  </div>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.027 7.77L0 32l8.43-2.01A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.894 22.324c-.33.927-1.922 1.77-2.646 1.883-.678.106-1.53.15-2.468-.155-.569-.184-1.3-.43-2.234-.842-3.937-1.7-6.507-5.67-6.703-5.933-.196-.263-1.6-2.126-1.6-4.055s1.013-2.878 1.372-3.27c.358-.39.78-.488 1.04-.488.26 0 .52.002.748.014.24.012.562-.091.88.671.33.787 1.12 2.716 1.218 2.912.098.196.163.424.033.683-.13.26-.196.423-.39.651-.195.228-.41.51-.585.684-.195.195-.398.406-.171.797.228.39 1.013 2.358 1.95 3.158 1.338 1.95 2.46 2.56 2.916 2.854.456.293.72.244.985-.049.267-.293 1.137-1.327 1.44-1.782.303-.456.606-.38 1.023-.228.416.15 2.64 1.245 3.094 1.47.456.228.76.342.872.53.11.195.11 1.122-.22 2.05z"/>
+    </svg>
+  </a>
+
+  <script>
+    function openMenu() {
+      document.getElementById('overlayMenu').classList.add('active');
+    }
+    function closeMenu() {
+      document.getElementById('overlayMenu').classList.remove('active');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>

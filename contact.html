@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Scott Furniture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-hero {
+      padding: 180px 8% 80px;
+      background: var(--sand);
+    }
+
+    .contact-hero .eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 20px;
+    }
+
+    .contact-hero h1 {
+      font-size: 4.2rem;
+      color: var(--timber);
+      max-width: 700px;
+      line-height: 1.1;
+    }
+
+    /* CONTACT BODY */
+    .contact-body {
+      padding: var(--section-pad);
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* INFO SIDE */
+    .contact-info h2 {
+      font-size: 1.8rem;
+      color: var(--timber);
+      margin-bottom: 28px;
+    }
+
+    .info-block {
+      margin-bottom: 32px;
+      border-top: 1px solid var(--sand);
+      padding-top: 24px;
+    }
+
+    .info-block h4 {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 10px;
+    }
+
+    .info-block p,
+    .info-block a {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    .info-block a:hover { color: var(--bark); }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 14px 28px;
+      background: #25D366;
+      color: white !important;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .whatsapp-link:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-link svg {
+      width: 18px; height: 18px;
+      fill: white;
+      flex-shrink: 0;
+    }
+
+    /* FORM SIDE */
+    .contact-form-wrap h2 {
+      font-size: 1.8rem;
+      color: var(--timber);
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 14px 16px;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      color: var(--charcoal);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--bark);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 140px; }
+
+    .form-submit {
+      margin-top: 8px;
+    }
+
+    .form-submit .btn-primary {
+      width: 100%;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    /* SUCCESS */
+    .form-success {
+      display: none;
+      padding: 20px;
+      background: var(--sand);
+      border-left: 3px solid var(--bark);
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--timber);
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero { padding: 130px 5% 60px; }
+      .contact-hero h1 { font-size: 2.6rem; }
+
+      .contact-body {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 60px 5%;
+      }
+
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Scott<span>.</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" onclick="openMenu()">&#9776;</button>
+  </header>
+
+  <div class="overlay-menu" id="overlayMenu">
+    <div class="close-btn" onclick="closeMenu()">&#10005;</div>
+    <ul>
+      <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="projects.html" onclick="closeMenu()">Projects</a></li>
+      <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <span class="eyebrow">Get in Touch</span>
+    <h1>Let's talk about your space</h1>
+  </section>
+
+  <!-- CONTACT BODY -->
+  <section class="contact-body">
+
+    <!-- INFO -->
+    <div class="contact-info reveal">
+      <h2>We'd love to hear from you</h2>
+
+      <div class="info-block">
+        <h4>Location</h4>
+        <p>Enugu, Nigeria</p>
+      </div>
+
+      <div class="info-block">
+        <h4>Phone</h4>
+        <a href="tel:+234XXXXXXXXXX">+234 XXX XXX XXXX</a>
+      </div>
+
+      <div class="info-block">
+        <h4>Email</h4>
+        <a href="mailto:scott@gmail.com">scott@gmail.com</a>
+      </div>
+
+      <div class="info-block">
+        <h4>Hours</h4>
+        <p>Monday – Friday: 8am – 6pm</p>
+        <p>Saturday: 9am – 3pm</p>
+      </div>
+
+      <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-link" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.027 7.77L0 32l8.43-2.01A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.894 22.324c-.33.927-1.922 1.77-2.646 1.883-.678.106-1.53.15-2.468-.155-.569-.184-1.3-.43-2.234-.842-3.937-1.7-6.507-5.67-6.703-5.933-.196-.263-1.6-2.126-1.6-4.055s1.013-2.878 1.372-3.27c.358-.39.78-.488 1.04-.488.26 0 .52.002.748.014.24.012.562-.091.88.671.33.787 1.12 2.716 1.218 2.912.098.196.163.424.033.683-.13.26-.196.423-.39.651-.195.228-.41.51-.585.684-.195.195-.398.406-.171.797.228.39 1.013 2.358 1.95 3.158 1.338 1.95 2.46 2.56 2.916 2.854.456.293.72.244.985-.049.267-.293 1.137-1.327 1.44-1.782.303-.456.606-.38 1.023-.228.416.15 2.64 1.245 3.094 1.47.456.228.76.342.872.53.11.195.11 1.122-.22 2.05z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form-wrap reveal">
+      <h2>Send us a message</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Emeka" id="fname">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Okonkwo" id="lname">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" id="email">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+234 XXX XXX XXXX" id="phone">
+      </div>
+      <div class="form-group">
+        <label>What are you looking for?</label>
+        <select id="service">
+          <option value="" disabled selected>Select a service</option>
+          <option>Custom Furniture</option>
+          <option>Luxury Wardrobe</option>
+          <option>Kitchen Cabinets</option>
+          <option>TV Unit</option>
+          <option>Office Interior</option>
+          <option>Full Interior Design</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us about your project</label>
+        <textarea placeholder="Describe your space, what you need, and any ideas you have..." id="message"></textarea>
+      </div>
+      <div class="form-submit">
+        <button class="btn-primary" onclick="handleSubmit()">Send Message</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        Thank you! We'll be in touch within 24 hours.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="logo">Scott<span>.</span></div>
+      <p>Handcrafted furniture and bespoke interiors built in Nigeria for homes that last.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Enugu, Nigeria</a></li>
+        <li><a href="#">+234 XXX XXX XXXX</a></li>
+        <li><a href="#">scott@gmail.com</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Scott. All Rights Reserved.</p>
+    <p>Crafted with care.</p>
+  </div>
+
+  <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.027 7.77L0 32l8.43-2.01A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.894 22.324c-.33.927-1.922 1.77-2.646 1.883-.678.106-1.53.15-2.468-.155-.569-.184-1.3-.43-2.234-.842-3.937-1.7-6.507-5.67-6.703-5.933-.196-.263-1.6-2.126-1.6-4.055s1.013-2.878 1.372-3.27c.358-.39.78-.488 1.04-.488.26 0 .52.002.748.014.24.012.562-.091.88.671.33.787 1.12 2.716 1.218 2.912.098.196.163.424.033.683-.13.26-.196.423-.39.651-.195.228-.41.51-.585.684-.195.195-.398.406-.171.797.228.39 1.013 2.358 1.95 3.158 1.338 1.95 2.46 2.56 2.916 2.854.456.293.72.244.985-.049.267-.293 1.137-1.327 1.44-1.782.303-.456.606-.38 1.023-.228.416.15 2.64 1.245 3.094 1.47.456.228.76.342.872.53.11.195.11 1.122-.22 2.05z"/>
+    </svg>
+  </a>
+
+  <script>
+    function openMenu() { document.getElementById('overlayMenu').classList.add('active'); }
+    function closeMenu() { document.getElementById('overlayMenu').classList.remove('active'); }
+
+    function handleSubmit() {
+      const name = document.getElementById('fname').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>
